@@ -11,7 +11,7 @@
     "logs": "firebase functions:log",
     "_config": "firebase functions:config:set pushover.app_token=$PUSHOVER_APP_TOKEN pushover.user_token=$PUSHOVER_USER_TOKEN pushover.device=iphone",
     "config": "dotenv -- yarn run _config",
-    "ship-it": "nvm use && yarn run config && yarn run build && yarn run deploy"
+    "ship-it": "yarn run config && yarn run build && yarn run deploy"
   },
   "engines": {
     "node": "18"

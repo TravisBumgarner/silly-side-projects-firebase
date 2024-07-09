@@ -6,6 +6,23 @@ const cors = require('cors')({ origin: true })
 
 admin.initializeApp()
 
+type Submission = {
+  email: string
+  name: string
+  message: string
+  timestamp: Date
+
+}
+
+const prettyPrintSubmission = (submission: Submission) => {
+  return `
+    Name: ${submission.name}
+    Email: ${submission.email}
+    Message: ${submission.message}
+    Timestamp: ${submission.timestamp}
+  `
+}
+
 export const contactForm = https.onRequest(async (req, res) => {
   cors(req, res, async () => {
     try {
@@ -15,8 +32,7 @@ export const contactForm = https.onRequest(async (req, res) => {
         email,
         name,
         message,
-        website,
-        timestamp: admin.firestore.FieldValue.serverTimestamp()
+        timestamp: new Date()
       }
 
       const result = await admin
@@ -29,10 +45,8 @@ export const contactForm = https.onRequest(async (req, res) => {
         user: config().pushover.user_token,
         device: config().pushover.device,
         title: `Form Submission: ${website}`,
-        message: submission
+        message: prettyPrintSubmission(submission)
       }
-
-      console.log(postData)
 
       axios
         .post('https://api.pushover.net/1/messages.json', postData, {
