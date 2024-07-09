@@ -1,0 +1,30 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "todo_today_website_contact_form",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "email",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "name",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "message",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "website",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}
