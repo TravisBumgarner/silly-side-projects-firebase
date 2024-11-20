@@ -43,7 +43,7 @@ export const contactForm = https.onRequest(async (req, res) => {
       const postData = {
         token: config().pushover.app_token,
         user: config().pushover.user_token,
-        device: config().pushover.device,
+        // device: config().pushover.device, // Push to all devices.
         title: `Form Submission: ${website}`,
         message: prettyPrintSubmission(submission)
       }
